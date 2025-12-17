@@ -34,3 +34,27 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Deploy on Firebase Hosting ✅
+
+Recommended: use Firebase Hosting's GitHub integration (Cloud Build).
+
+- In the Firebase Console ▶ Hosting ▶ Connect repository, select this repo.
+- Set **Live branch** to `main`.
+- Set **App root directory** to `apps/website` (this ensures Cloud Build runs in the Next.js app folder).
+- Set **Build command** to `npm ci && npm run build`.
+
+Manual deploy (via Firebase CLI):
+
+```bash
+cd apps/website
+npm ci
+npm run build
+firebase deploy --only hosting
+```
+
+Notes:
+
+- Ensure `apps/website/package.json` and the `app/` directory are at the app root (they are).
+- Do not commit `node_modules/` or `.next/` — they should be ignored by `.gitignore`.
+- The GitHub integration with the above settings should make Cloud Build pass and publish your Next.js site.
