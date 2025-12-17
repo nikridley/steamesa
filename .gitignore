@@ -1,0 +1,6 @@
+# Ignore node modules and Next build artifacts
+node_modules/
+.next/
+**/node_modules/
+apps/website/node_modules
+apps/website/.next
